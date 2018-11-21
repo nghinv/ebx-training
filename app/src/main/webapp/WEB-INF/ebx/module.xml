@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module xmlns="urn:ebx-schemas:module_2.3"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="urn:ebx-schemas:module_2.3 http://schema.orchestranetworks.com/module_2.3.xsd">
+  <name>ebx-training</name>
+  <publicPath>ebx-training</publicPath>
+	<locales>
+		<locale>fr</locale>
+		<locale isDefault="true">en</locale>
+		<locale>de</locale>
+	</locales>
+</module>

@@ -1,0 +1,156 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.on.ps.mdm.training</groupId>
+  <artifactId>ebx-training</artifactId>
+  <version>0.1</version>
+  <packaging>war</packaging>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencies>
+    <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
+    <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter-api</artifactId>
+        <version>5.3.1</version>
+        <scope>test</scope>
+    </dependency>
+
+    <dependency>
+        <groupId>javax.mail</groupId>
+        <artifactId>javax.mail-api</artifactId>
+        <version>1.6.2</version>
+        <scope>provided</scope>
+    </dependency>
+    <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>javax.servlet-api</artifactId>
+        <version>4.0.1</version>
+        <scope>provided</scope>
+    </dependency>
+
+		<dependency>
+			<groupId>com.orchestranetworks.ebx</groupId>
+			<artifactId>ebx.api.core</artifactId>
+			<version>5.7.1.1034-0058</version>
+			<scope>provided</scope>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.5.1</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>3.1.1</version>
+        <executions>
+          <!--execution>
+            <id>src-dependencies</id>
+            <phase>package</phase>
+            <goals>
+              <goal>copy-dependencies</goal>
+            </goals>
+            <configuration>
+              <classifier>sources</classifier>
+              <failOnMissingClassifierArtifact>false</failOnMissingClassifierArtifact>
+              <outputDirectory>${project.build.directory}/deps</outputDirectory>
+            </configuration>
+          </execution-->
+          <execution>
+            <id>copy-dependencies</id>
+            <phase>package</phase>
+            <goals>
+              <goal>copy-dependencies</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.build.directory}/deps</outputDirectory>
+              <overWriteSnapshots>false</overWriteSnapshots>
+              <overWriteReleases>false</overWriteReleases>
+              <overWriteIfNewer>true</overWriteIfNewer>
+			        <excludeArtifactIds>ebx.api.core,ebx.api.addon,javax.mail-api,javax.servlet-api,junit-jupiter-api</excludeArtifactIds>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+		</plugins>
+	</build>
+
+	<distributionManagement>
+		<repository>
+			<id>mickaelgermemont.repo.releases</id>
+			<name>MickaelGermemont EBX Repository Releases</name>
+			<url>http://javastore.mickaelgermemont.com:8081/repository/releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>mickaelgermemont.repo.snapshots</id>
+			<name>MickaelGermemont EBX Repository Snapshots</name>
+			<url>http://javastore.mickaelgermemont.com:8081/repository/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+	<repositories>
+		<repository>
+			<id>mickaelgermemont.repo.releases</id>
+			<name>MickaelGermemont EBX Repository</name>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+				<checksumPolicy>warn</checksumPolicy>
+			</releases>
+			<url>http://javastore.mickaelgermemont.com:8081/repository/releases</url>
+			<layout>default</layout>
+		</repository>
+		<repository>
+			<id>mickaelgermemont.repo.snapshots</id>
+			<name>MickaelGermemont EBX Repository</name>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+				<checksumPolicy>warn</checksumPolicy>
+			</snapshots>
+			<url>http://javastore.mickaelgermemont.com:8081/repository/snapshots</url>
+			<layout>default</layout>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>mickaelgermemont.repo.releases</id>
+			<name>MickaelGermemont EBX Repository</name>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+				<checksumPolicy>warn</checksumPolicy>
+			</releases>
+			<url>http://javastore.mickaelgermemont.com:8081/repository/releases</url>
+			<layout>default</layout>
+		</pluginRepository>
+		<pluginRepository>
+			<id>mickaelgermemont.repo.snapshots</id>
+			<name>MickaelGermemont EBX Repository</name>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+				<checksumPolicy>warn</checksumPolicy>
+			</snapshots>
+			<url>http://javastore.mickaelgermemont.com:8081/repository/snapshots</url>
+			<layout>default</layout>
+		</pluginRepository>
+	</pluginRepositories>
+
+</project>
