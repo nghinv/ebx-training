@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--XML schema generated from EBX5 DMA instance [reference=training] on Wed Nov 21 16:02:18 UTC 2018 by user [admin].-->
+<xs:schema xmlns:osd="urn:ebx-schemas:common_1.0" xmlns:fmt="urn:ebx-schemas:format_1.0" xmlns:ebxbnd="urn:ebx-schemas:binding_1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ebxs="urn:ebx-schemas:session_1.0">
+    <xs:import namespace="urn:ebx-schemas:common_1.0" schemaLocation="http://schema.orchestranetworks.com/common_1.0.xsd"/>
+    <xs:import namespace="urn:ebx-schemas:session_1.0" schemaLocation="http://schema.orchestranetworks.com/session_1.0.xsd"/>
+    <xs:element name="root" osd:access="--">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Training" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:annotation>
+                            <xs:appinfo>
+                                <osd:table>
+                                    <primaryKeys>/id </primaryKeys>
+                                </osd:table>
+                            </xs:appinfo>
+                        </xs:annotation>
+                        <xs:sequence>
+                            <xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"/>
+                            <xs:element name="fkEbxDirectoryUsers" type="xs:string" minOccurs="0" maxOccurs="1">
+                                <xs:annotation>
+                                    <xs:appinfo>
+                                        <osd:otherFacets>
+                                            <osd:tableRef>
+                                                <container>ebx-directory</container>
+                                                <branch>ebx-directory</branch>
+                                                <tablePath>/directory/users</tablePath>
+                                            </osd:tableRef>
+                                        </osd:otherFacets>
+                                    </xs:appinfo>
+                                </xs:annotation>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
